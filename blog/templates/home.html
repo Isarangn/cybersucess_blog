@@ -1,0 +1,18 @@
+{% extends 'base.html'%} {% block content%}
+<h4>Welcome to My Django Blog!!!</h4>
+<br/> {% for p in posts %}
+<div class="card border-primary mb-3">
+    <div class="card-header"><b><a class="article-title" href="{% url 'post-detail' p.id %}">{{ p.title }}</a></b></div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-1">
+                <img class="rounded-circle article-img" src="{{ p.author.profile.image.url }}" style="height:45px;width:45px;">
+            </div>
+        </div>
+        <div class="col-md-11">
+            <h6 class="card-title">By - {{p.author}} On {{p.date_posted}}</h6>
+        </div>
+        <p class="card-text">{{p.content}}</p>
+    </div>
+</div>
+{% endfor %} {% endblock %}
